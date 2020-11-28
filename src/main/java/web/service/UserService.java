@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class UserService{
+public class UserService {
 
     @Autowired
     @Qualifier("userDaoImp")
@@ -19,17 +19,28 @@ public class UserService{
     @Transactional
     //@Override
     public void add(User user) {
-        userDao.add(user);
+        userDao.create(user);
+    }
+
+    @Transactional
+    public void update(long id, User user) {
+        userDao.update(id, user);
+    }
+
+    @Transactional
+    public void deleteById(long id) {
+        userDao.deleteById(id);
     }
 
     //@Override
     public void delete(User user) {
-        userDao.delete(user);
+        userDao.deleteById(user.getId());
     }
 
     //@Override
-    public User update(User user) {
-        return null;
+    @Transactional
+    public User show(long id) {
+        return userDao.read(id);
     }
 
     @Transactional
