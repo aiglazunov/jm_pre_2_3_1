@@ -17,14 +17,13 @@ public class UserService {
     private UserDao userDao;
 
     @Transactional
-    //@Override
     public void add(User user) {
         userDao.create(user);
     }
 
     @Transactional
-    public void update(long id, User user) {
-        userDao.update(id, user);
+    public void update(User user) {
+        userDao.update(user);
     }
 
     @Transactional
@@ -32,19 +31,18 @@ public class UserService {
         userDao.deleteById(id);
     }
 
-    //@Override
+
     public void delete(User user) {
         userDao.deleteById(user.getId());
     }
 
-    //@Override
+
     @Transactional
     public User show(long id) {
         return userDao.read(id);
     }
 
     @Transactional
-    //@Override
     public List<User> listUsers() {
         return userDao.listUsers();
     }

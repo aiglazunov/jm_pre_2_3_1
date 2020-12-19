@@ -43,16 +43,9 @@ public class UserController {
         return "users/edit";
     }
 
-    /*
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        userService.update(id, user);
-        return "redirect:/users";
-    }
-    */
     @PostMapping("/{id}/edit")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        userService.update(id, user);
+    public String update(@ModelAttribute("user") User user) {
+        userService.update(user);
         return "redirect:/users";
     }
 
@@ -61,7 +54,6 @@ public class UserController {
         userService.deleteById(id);
         return "redirect:/users";
     }
-
 
 
 }
